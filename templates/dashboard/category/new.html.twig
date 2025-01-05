@@ -1,0 +1,74 @@
+{% extends "home/layout.html.twig" %}
+
+{% block title %}New Category | MarketPlace{% endblock %}
+
+{% block main %}
+    <div class="main-content">
+        <div class="page-content">
+
+            <!-- Start grid -->
+                <section class="py-20">
+                    <div class="container mx-auto">
+                        <div class="mt-5">
+                            <div class="flex items-center justify-between">
+                                <div class="col-span-12 lg:col-span-8">
+                                    <h3 class="mb-0 text-gray-900 fs-16 dark:text-gray-50"> New Category</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# form #}
+                        <div class="flex items-center mt-5 justify-center">
+                            <div class="w-full lg:w-[40rem]">
+                                <div class="mt-4">
+                                    {# <h3 class="mb-2 text-3xl text-gray-900 dark:text-white">Get in touch</h3>
+                                    <p class="text-gray-500 dark:text-gray-300">Start working with Jobcy that can provide everything you need to generate
+                                        awareness, drive traffic, connect.</p> #}
+
+                                    {% if form_errors(form) %}
+                                        <div class="relative px-4 py-3 text-red-500 rounded-md bg-red-500/20 alert-dismissible mb-4" role="alert">
+                                            {{ form_errors(form) }}
+                                            <button class="absolute text-2xl text-gray-400 alert-close top-2 ltr:right-4 rtl:left-4"><i class="mdi mdi-close"></i></button>
+                                        </div>
+                                    {% endif %}
+
+                                    <form method="post" class="mt-4 contact-form" name="myForm" id="myForm" action="{{ path('app_category_new') }}">
+                                        {{ form_row(form._token) }}
+                                        <span id="error-msg"></span>
+                                        <div class="grid grid-cols-12 gap-5">
+                                            <div class="col-span-12">
+                                                <div class="mb-3">
+                                                    <label for="nameInput" class="text-gray-900 dark:text-gray-50">Name</label>
+                                                    <input type="text" name="{{ field_name(form.name) }}" value="{{ field_value(form.name) }}" id="name" class="w-full mt-1 rounded border-gray-100/50 placeholder:text-sm placeholder:text-gray-400 dark:bg-transparent dark:border-gray-800 focus:ring-0 focus:ring-offset-0 dark:text-gray-200" placeholder="Enter category name">
+                                                </div>
+                                            </div><!--end col-->
+                                            <div class="col-span-12 lg:col-span-6 flex items-center gap-4">
+                                                <div class="form-check">
+                                                    <input class="align-middle rounded cursor-pointer focus:ring-0 focus:ring-offset-0 bg-gray-50 border-gray-100/50 checked:bg-violet-500 checked:border-transparent dark:bg-transparent dark:border-neutral-600 dark:checked:bg-violet-500 dark:checked:border-transparent" type="radio" name="{{ field_name(form.statusText) }}" value="active" id="status-active">
+                                                    <label class="ml-1.5 align-middle dark:text-gray-300" for="status-active">
+                                                        Activate
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="align-middle rounded cursor-pointer focus:ring-0 focus:ring-offset-0 bg-gray-50 border-gray-100/50 checked:bg-violet-500 checked:border-transparent dark:bg-transparent dark:border-neutral-600 dark:checked:bg-violet-500 dark:checked:border-transparent" type="radio" name="{{ field_name(form.statusText) }}" value="disabled" id="status-disabled">
+                                                    <label class="ml-1.5 align-middle dark:text-gray-300" for="status-disabled">
+                                                        Disable
+                                                    </label>
+                                                </div>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
+                                        <div class="text-right">
+                                            <button type="submit" id="submit" name="submit" class="text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500"> Submit <i class="uil uil-save ms-1"></i></button>
+                                        </div>
+                                    </form><!--end form-->
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                    </div>
+                </section>
+            <!-- End grid -->
+
+        </div>
+    </div>
+{% endblock %}

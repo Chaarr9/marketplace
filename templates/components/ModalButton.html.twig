@@ -1,0 +1,10 @@
+<a 
+    {% if href %}
+        href="#{{ href }}"
+    {% endif %}
+    class="py-3 font-medium text-gray-800 text-13 dark:text-gray-50" 
+    data-tw-toggle="modal"
+    data-tw-target="#{{ target}}" 
+    {{ attributes }}>
+        {% block content %}{% endblock %}
+</a>

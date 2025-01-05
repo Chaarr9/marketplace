@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('assets/libs/choices.js/public/assets/styles/choices.min.css')}}">
+
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="{{asset('assets/libs/swiper/swiper-bundle.min.css')}}">
+
+    <!-- Nouislider Css -->
+    <link rel="stylesheet" href="{{asset('assets/libs/nouislider/nouislider.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('assets/css/icons.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/tailwind.css')}}" />
+
+    {% block innersheets %}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unicons.iconscout.com/release/v4.0.0/script/monochrome/bundle.js"></script>
+    <script src="{{asset('assets/libs/@popperjs/core/umd/popper.min.js')}}"></script>
+    <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+
+
+    <script src="{{asset('assets/js/pages/switcher.js')}}"></script>
+
+    <script src="{{asset('assets/libs/choices.js/public/assets/scripts/choices.min.js')}}"></script>
+
+    <script src="{{asset('assets/js/pages/job-list.init.js')}}"></script>
+
+    <script src="{{asset('assets/js/pages/dropdown&modal.init.js')}}"></script>
+
+    <!-- Swiper Js -->
+    <script src="{{asset('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/pages/swiper.init.js')}}"></script>
+
+    <!-- Nouislider Js -->
+    <script src="{{asset('assets/libs/nouislider/nouislider.min.js')}}"></script>
+
+    <script src="{{asset('assets/js/pages/area-filter-range.init.js')}}"></script>
+
+    <script src="{{asset('assets/js/pages/nav&tabs.js')}}"></script>
+
+    <script src="{{asset('assets/js/app.js')}}"></script>
+
+    {% block innerscript %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/home/_topbar.html.twig" %}
+    {% include "partials/home/_navbar.html.twig" %}
+
+    {# {% include "home/_customizer.html.twig" %} #}
+
+    {% block main %}{% endblock %}
+
+    {# {% include "partials/home/_footer.html.twig" %} #}
+{% endblock %}

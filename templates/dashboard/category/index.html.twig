@@ -1,0 +1,81 @@
+{% extends "home/layout.html.twig" %}
+
+{% block title %}Dashboard | MarketPlace{% endblock %}
+
+{% block main %}
+    <div class="main-content">
+        <div class="page-content">
+
+            <!-- Start grid -->
+                <section class="py-20">
+                    <div class="container mx-auto">
+                        <div class="mt-5">
+                            <div class="flex items-center justify-between">
+                                <div class="col-span-12 lg:col-span-8">
+                                    <h6 class="mb-0 text-gray-900 fs-16 dark:text-gray-50"> Showing {{ currentPage }} of {{ totalPages }} pages</h6>
+                                </div>
+                                <div class="col-span-12 lg:col-span-4">
+                                    <a href="{{ path('app_category_new') }}" class="w-full text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 hover:-translate-y-2">Add</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <div class="grid grid-cols-12 gap-y-6 lg:gap-6 rounded bg-gray-50 dark:bg-neutral-700 p-4">
+
+                                {% for category in categories %}
+                                    <div class="col-span-12 md:col-span-6 lg:col-span-4 px-4 py-2 bg-white rounded dark:bg-neutral-600 flex justify-between items-center">
+                                        <div>
+                                            <p class="text-gray-900 dark:text-white font-medium">{{ category.name }}</p>
+                                            <small class="text-white text-center capitalize block px-0.5 py-1 rounded-full bg-gray-500">{{ category.status }}</small>
+                                        </div>
+                                        <div class="flex gap-3 items-center">
+                                            <a href="{{ path('app_category_edit', {id: category.id}) }}"><i class="mdi mdi-pencil"></i></a>|
+                                            <form action="{{ path('app_category_delete', {id: category.id}) }}" method="post">
+                                                <button type="submit"><i class="mdi mdi-delete"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    
+                        {# Pagination #}
+                        <div class="grid grid-cols-12">
+                            <div class="col-span-12">
+                                <ul class="flex justify-center gap-2 mt-8">
+                                    {% if currentPage > 1 %}
+                                        <li class="w-12 h-12 text-center border rounded-full cursor-default border-gray-100/50 dark:border-gray-100/20">
+                                            <a class="w-full h-full cursor-auto block" href="{{ path('app_advert_index', { page: currentPage - 1 }) }}" tabindex="-1">
+                                                <i class="mdi mdi-chevron-double-left text-16 leading-[2.8] dark:text-white"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for i in 1..totalPages %}
+                                        <li class="w-12 h-12 text-center border border-transparent rounded-full cursor-pointer {{ currentPage == i ? 'text-white group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500' : 'text-gray-900 border-gray-100/50 hover:bg-gray-100/30 focus:bg-gray-100/30 dark:border-gray-100/20 dark:text-gray-50 dark:hover:bg-gray-500/20' }}">
+                                            <a class="w-full h-full text-16 leading-[2.8] block" href="{{ path('app_advert_index', { page: i }) }}">{{ i }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    {# text-white group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 #}
+                                    {# text-gray-900 border-gray-100/50 hover:bg-gray-100/30 focus:bg-gray-100/30 dark:border-gray-100/20 dark:text-gray-50 dark:hover:bg-gray-500/20 #}
+
+                                    {% if currentPage < totalPages %}
+                                        <li class="w-12 h-12 text-center text-gray-900 transition-all duration-300 border rounded-full cursor-pointer border-gray-100/50 hover:bg-gray-100/30 focus:bg-gray-100/30 dark:border-gray-100/20 dark:text-gray-50 dark:hover:bg-gray-500/20">
+                                            <a class="w-full h-full block" href="{{ path('app_advert_index', { page: currentPage + 1 }) }}" tabindex="-1">
+                                                <i class="mdi mdi-chevron-double-right text-16 leading-[2.8]"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!--end col-->
+                        </div>
+                    </div>
+                </section>
+            <!-- End grid -->
+
+        </div>
+    </div>
+{% endblock %}

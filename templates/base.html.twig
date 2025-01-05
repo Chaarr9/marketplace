@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-mode="light" class="scroll-smooths group" data-theme-color="violet">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <!-- <meta
+          content="Tailwind Multipurpose Admin & Dashboard Template"
+          name="description"
+        />
+        <meta content="" name="Themesbrand" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
+
+        {% block stylesheets %}{% endblock %}
+
+        <link rel="stylesheet" href="{{asset('build/app.css')}}">
+
+    </head>
+    <body  class="bg-white dark:bg-neutral-800">
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+
+        <script src="{{asset('build/app.js')}}"></script>
+    </body>
+</html>
